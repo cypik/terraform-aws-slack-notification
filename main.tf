@@ -37,13 +37,3 @@ module "lambda" {
     SLACK_WEBHOOK_URL = var.SLACK_WEBHOOK_URL
   }
 }
-
-resource "null_resource" "zip_lambda" {
-  provisioner "local-exec" {
-    command = "cd ../lambda_packages/ && rm -f index.zip && zip index.zip lambda_function.py"
-  }
-
-  triggers = {
-    always_run = timestamp()
-  }
-}
