@@ -22,9 +22,10 @@ To use this module, you should have Terraform installed and configured for AWS. 
 ```hcl
 module "slack-alert" {
   source                            = "cypik/slack-notification/aws"
-  version                           = "1.0.0"
+  version                           = "1.0.1"
   name                              = "slack"
   filename                          = "../lambda_packages/index.zip"
+  layer_filenames                   = ["../lambda_packages/layer.zip"]
   handler                           = "lambda_function.handler"
   runtime                           = "python3.9"
   compatible_architectures          = ["x86_64"]
@@ -70,9 +71,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_null"></a> [null](#provider\_null) | ~> 3.2.4 |
+No providers.
 
 ## Modules
 
@@ -83,9 +82,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [null_resource.zip_lambda](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+No resources.
 
 ## Inputs
 
@@ -102,7 +99,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 | <a name="input_handler"></a> [handler](#input\_handler) | Lambda function handler | `string` | n/a | yes |
 | <a name="input_iam_actions"></a> [iam\_actions](#input\_iam\_actions) | IAM actions for execution role | `list(string)` | `[]` | no |
 | <a name="input_label_order"></a> [label\_order](#input\_label\_order) | Label order, e.g. `name`,`application`. | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
-| <a name="input_layer_filenames"></a> [layer\_filenames](#input\_layer\_filenames) | List of Lambda layer filenames | `list(string)` | <pre>[<br>  "../lambda_packages/layer.zip"<br>]</pre> | no |
+| <a name="input_layer_filenames"></a> [layer\_filenames](#input\_layer\_filenames) | List of Lambda layer filenames | `list(string)` | `[]` | no |
 | <a name="input_layer_names"></a> [layer\_names](#input\_layer\_names) | Layer names | `list(string)` | <pre>[<br>  "requests"<br>]</pre> | no |
 | <a name="input_managedby"></a> [managedby](#input\_managedby) | ManagedBy, eg 'info@cypik.com'. | `string` | `"info@cypik.com"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name  (e.g. `app` or `api`). | `string` | `""` | no |
