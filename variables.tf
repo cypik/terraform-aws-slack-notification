@@ -79,7 +79,7 @@ variable "layer_names" {
 variable "layer_filenames" {
   description = "List of Lambda layer filenames"
   type        = list(string)
-  default     = ["../lambda_packages/layer.zip"]
+  default     = []
 }
 
 variable "compatible_runtimes" {

@@ -6,6 +6,7 @@ module "slack-alert" {
   source                            = ".././"
   name                              = "slack"
   filename                          = "../lambda_packages/index.zip"
+  layer_filenames                   = ["../lambda_packages/layer.zip"]
   handler                           = "lambda_function.handler"
   runtime                           = "python3.9"
   compatible_architectures          = ["x86_64"]
